@@ -1,0 +1,73 @@
+<div class="register-page w-4/5 flex flex-row border rounded mx-auto mb-4 h-[85vh]">
+    <div class="w-4/5 mx-auto md:px-10 md:w-1/2">
+        <form [formGroup]='registerForm' (ngSubmit)="onSubmit()" class="flex flex-col  mx-auto m-10 ">
+            <h3 class="text-2xl font-bold mb-10">Open the doors of knowledge</h3>
+
+            <!-- First Name input-->
+            <div class="mb-4">
+                <label class="block mb-2" for="first-name">First Name</label>
+                <input type="text" placeholder="First Name" id="first-name" formControlName="firstName"
+                    class="border rounded w-full py-2 px-3"
+                    [ngClass]="{'border-red-500': firstName!.invalid && (firstName?.dirty || firstName?.touched)}">
+
+                <!-- Validation Error Message -->
+                <div *ngIf="firstName!.invalid && (firstName?.dirty || firstName?.touched)">
+                    <p *ngIf="firstName!.hasError('required')" class="text-red-500 text-sm">First name is required.</p>
+                </div>
+            </div>
+
+            <!-- Last Name input-->
+            <div class="mb-4">
+                <label class="block mb-2" for="last-name">Last Name</label>
+                <input type="text" placeholder="Last Name" formControlName="lastName" id="last-name"
+                    class="border rounded w-full py-2 px-3"
+                    [ngClass]="{'border-red-500': lastName!.invalid && (lastName!.dirty || lastName?.touched)}">
+                <!-- Validation Error Message -->
+                <div *ngIf="lastName!.invalid && (lastName?.dirty || lastName?.touched)">
+                    <p *ngIf="lastName!.hasError('required')" class="text-red-500 text-sm">Last name is required.</p>
+                </div>
+            </div>
+
+            <!-- Email input -->
+            <div class="mb-4">
+                <label class="block mb-2" for="email">Email</label>
+                <input type="email" placeholder="Email" formControlName="email" id="email"
+                    class="border rounded w-full py-2 px-3"
+                    [ngClass]="{'border-red-500': email!.invalid && (email?.dirty || email?.touched)}">
+
+                <!-- Validation Error Message -->
+                <div *ngIf="email!.invalid && (email!.dirty || email!.touched)">
+                    <p *ngIf="email!.hasError('required')" class="text-red-500 text-sm">Email is required.</p>
+                    <p *ngIf="email!.hasError('email')" class="text-red-500 text-sm">Please enter a valid email address.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="mb-4">
+                <label class="block mb-2" for="password">Password</label>
+                <input type="password" placeholder="password" formControlName="password" id="Password"
+                    class="border rounded w-full py-2 px-3"
+                    [ngClass]="{'border-red-500': password!.invalid && (password?.dirty || password?.touched)}">
+
+                <!-- Validation Error Message -->
+                <div *ngIf="password!.invalid && (password!.dirty || password!.touched)">
+                    <p *ngIf="password!.hasError('required')" class="text-red-500 text-sm">Password is required.</p>
+                    <p *ngIf="email!.hasError('password')" class="text-red-500 text-sm">Please enter a valid password.
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-center justify-between">
+                <button
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline"
+                    type="submit">
+                    Sign Up
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="image-area w-1/2 border rounded hidden md:block bg-cover bg-center"
+        style="background-image: url('https://media.istockphoto.com/id/167237322/photo/books.jpg?s=170667a&w=0&k=20&c=Xd5wTJ007PgUvv2COAWWNUYkD8RdJ8jNGT16cyrn_xo=');">
+
+    </div>
+</div>

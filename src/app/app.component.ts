@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { BookListComponent } from './features/book-features/components/book-list/book-list.component';
+import { MenuComponent } from './core/components/menu/menu.component';
+import { HomeComponent } from './features/home/components/home/home.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, BookListComponent, MenuComponent, HomeComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'bookland-frontend-angular';
