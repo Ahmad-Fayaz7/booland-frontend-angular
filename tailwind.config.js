@@ -73,17 +73,17 @@ module.exports = {
       // Colors
       colors: {
         primary: {
-          DEFAULT: "#6366F1",
-          50: "#EEF2FF",
-          100: "#E0E7FF",
-          200: "#C7D2FE",
-          300: "#A5B4FC",
-          400: "#818CF8",
-          500: "#6366F1",
-          600: "#4F46E5",
-          700: "#4338CA",
-          800: "#3730A3",
-          900: "#312E81",
+          DEFAULT: "#42159e",
+          50: "#efe8fc",
+          100: "#cfbbf6",
+          200: "#af8ef0",
+          300: "#8f61ea",
+          400: "#6e34e4",
+          500: "#551bcb",
+          600: "#42159e",
+          700: "#2f0f71",
+          800: "#1c0944",
+          900: "#090317",
         },
 
         success: {
@@ -115,7 +115,7 @@ module.exports = {
         },
 
         destructive: {
-          DEFAULT: "#EF4444",
+          DEFAULT: "#ee46bc",
           50: "#FEF2F2",
           100: "#FEE2E2",
           200: "#FECACA",
