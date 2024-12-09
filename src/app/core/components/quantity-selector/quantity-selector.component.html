@@ -1,0 +1,24 @@
+<label for="counter-input" class="sr-only">Choose quantity:</label>
+<div class="flex items-center justify-between  md:justify-end">
+    <div class="flex items-center">
+        <button type="button" id="decrement-button" (click)="decrement()">
+            <svg class="h-2.5 w-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 18 2">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 1h16" />
+            </svg>
+        </button>
+        <input type="text" id="counter-input" data-input-counter placeholder="" value="1" required
+            [(ngModel)]="quantity" [min]="1" />
+        <button type="button" id="increment-button" (click)="increment()">
+            <svg class="h-2.5 w-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 18 18">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 1v16M1 9h16" />
+            </svg>
+        </button>
+    </div>
+    <div class="text-end md:order-4 md:w-32">
+        <p class="text-base font-bold text-gray-900 dark:text-white">$1,499</p>
+    </div>
+</div>

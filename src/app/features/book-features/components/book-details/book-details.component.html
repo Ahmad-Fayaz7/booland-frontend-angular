@@ -1,1 +1,38 @@
-<p>book-details works!</p>
+<div class="container mx-auto p-5 items-center">
+    <div class="book-details">
+        <div class="left-side">
+            <img [src]="book?.coverImageUrl" alt="" class="rounded-md">
+            <a href="" class="bg-primary text-white p-4 mt-4 text-center rounded-md">Add To Card</a>
+        </div>
+        <div class="right-side">
+            <h1 class="text-3xl font-sans">{{book?.title}}</h1>
+            <p class="font-sans font-semibold">{{book?.author}}</p>
+            <p class="font-sans text-neutral-500 mt-8 text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit. Porro
+                nostrum recusandae molestiae earum excepturi natus, deserunt quis consequatur atque sequi repellendus!
+                Ipsam alias qui consectetur illum ipsum sapiente vitae et?</p>
+            <div class="details w-[300px]">
+                <div class="details-item">
+                    <h3>PUBLISHER</h3>
+                    <p>Books Publisher</p>
+                </div>
+                <div class="details-item">
+                    <h3>ISBN</h3>
+                    <p>{{book?.isbn}}</p>
+                </div>
+                <div class="details-item">
+                    <h3>LANGUAGE</h3>
+                    <p>Books Language</p>
+                </div>
+                <div class="details-item">
+                    <h3>PAGES</h3>
+                    <p>Books Pages</p>
+                </div>
+                <div class="details-item">
+                    <h3>PRICE</h3>
+                    <p id="price">{{book?.price}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

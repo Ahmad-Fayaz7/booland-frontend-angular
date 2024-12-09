@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserCreationDTO, UserCredentials } from '../models/user.model';
-import { environmet } from '../../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
-  apiUrl = environmet.apiUrl;
+  apiUrl = environment.apiUrl;
   private readonly tokenKey: string = 'token';
 
   register(user: UserCreationDTO): Observable<any> {

@@ -1,0 +1,20 @@
+.swiper-button-next {
+  @apply bg-black rounded-[50%];
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #ddd;
+
+  /* Center slide text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Navigation button styling */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #f02e2e; /* Change to your desired color */
+}
