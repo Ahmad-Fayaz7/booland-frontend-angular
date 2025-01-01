@@ -7,12 +7,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CartService } from '../../../shopping-cart/services/cart.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -20,7 +21,8 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {}
 
   loginForm!: FormGroup;
@@ -43,6 +45,7 @@ export class LoginComponent {
         this.authService.saveToken(token);
         this.router.navigate(['/']);
         console.log('Token:', token);
+        this.cartService.changeOnNumOfCartItems();
       },
       error: (err) => {
         console.error('Error occurred:', err); // Log the full error object for inspection

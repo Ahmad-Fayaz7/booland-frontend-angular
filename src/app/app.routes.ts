@@ -10,7 +10,7 @@ import { CheckoutFormComponent } from './features/checkout/checkout-form/checkou
 export const routes: Routes = [
   {
     path: '',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     component: HomeComponent,
   },
   {
@@ -18,7 +18,7 @@ export const routes: Routes = [
     component: DetailsPageComponent,
   },
   {
-    path: 'register',
+    path: 'signup',
     component: SignUpComponent,
   },
   {

@@ -5,17 +5,17 @@
         <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
             <div class="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
                 <div class="space-y-6 flex flex-col">
-                    <app-cart-item></app-cart-item>
-                    <app-cart-item></app-cart-item>
+                    <app-cart-item *ngFor="let item of cartItems" [item]="item"
+                        (priceChange)="onPriceChange($event, item)" (itemRemoval)="onItemRemoval(item)"></app-cart-item>
                 </div>
 
                 <!-- people also bought -->
-                <div class="hidden xl:mt-8 xl:block">
-                    <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">People also bought</h3>
+                <div class="hidden xl:mt-8 xl:block" *ngIf="similarBooks.length > 0">
+                    <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">Similar books</h3>
                     <div class="mt-6 grid grid-cols-3 gap-4 sm:mt-8">
-                        <app-also-bought-item></app-also-bought-item>
-                        <app-also-bought-item></app-also-bought-item>
-                        <app-also-bought-item></app-also-bought-item>
+                        <app-also-bought-item *ngFor="let book of similarBooks" [book]="book"
+                            (onAddToCart)="addBook()"></app-also-bought-item>
+
                     </div>
                 </div>
             </div>
@@ -26,10 +26,11 @@
                     <p class="text-xl font-semibold text-gray-900 dark:text-white">Order summary</p>
 
                     <div class="space-y-4">
-                        <div class="space-y-2">
+                        <!--  <div class="space-y-2">
                             <dl class="flex items-center justify-between gap-4">
                                 <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Original price</dt>
-                                <dd class="text-base font-medium text-gray-900 dark:text-white">$7,592.00</dd>
+                                <dd class="text-base font-medium text-gray-900 dark:text-white">
+                                    {{totalCartPrice}}</dd>
                             </dl>
 
                             <dl class="flex items-center justify-between gap-4">
@@ -46,16 +47,16 @@
                                 <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Tax</dt>
                                 <dd class="text-base font-medium text-gray-900 dark:text-white">$799</dd>
                             </dl>
-                        </div>
+                        </div> -->
 
                         <dl
                             class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
                             <dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                            <dd class="text-base font-bold text-gray-900 dark:text-white">$8,191.00</dd>
+                            <dd class="text-base font-bold text-gray-900 dark:text-white">${{totalCartPrice}}</dd>
                         </dl>
                     </div>
 
-                    <a href="#"
+                    <a [routerLink]="['/checkout']"
                         class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed
                         to Checkout</a>
 

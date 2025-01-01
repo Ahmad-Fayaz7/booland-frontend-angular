@@ -1,0 +1,23 @@
+<div class="flex flex-col items-center justify-center min-h-min ">
+    <a href="">
+        <!-- Book Cover and Circle -->
+        <div class="relative">
+            <!-- Circle behind the book -->
+            <div class="circle border border-purple-500 rounded-full w-56 h-56 absolute -inset-x-16 mx-auto mt-12 z-0">
+            </div>
+
+            <!-- Book Image (on top of the circle) -->
+            <div class="w-40 h-56 bg-cover shadow-2xl z-10 border rounded relative overflow-hidden">
+                <img src="{{category?.imageUrl}}" alt="" class="w-full h-full object-cover">
+            </div>
+
+
+        </div>
+
+        <!-- Category Text -->
+        <div class="mt-16 text-center">
+            <p class="font-semibold text-lg">{{category?.name}}</p>
+        </div>
+
+    </a>
+</div>

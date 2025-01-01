@@ -1,9 +1,10 @@
 import { CategoryDTO } from './category.model';
 
 export interface BookDTO {
-  category: CategoryDTO[];
+  category: CategoryDTO[] | string[];
   _id: string;
   author: string;
+  description: string;
   coverImageUrl: string;
   isbn: string;
   price: number;

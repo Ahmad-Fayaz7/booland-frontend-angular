@@ -9,12 +9,12 @@ import {
 } from '@angular/forms';
 import { UserCreationDTO } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css',
 })
@@ -37,19 +37,23 @@ export class SignUpComponent {
 
   onSubmit() {
     if (this.registerForm.invalid) return;
+
     this.user = this.registerForm.value;
-    this.authService.register(this.user).subscribe((res) => {
-      next: {
-        if (res.Successed) {
-          const token = res.header.get('x-auth-token');
+
+    this.authService.register(this.user).subscribe({
+      next: (res) => {
+        const token = res.headers.get('x-auth-token'); // Use `headers` instead of `header`
+        if (token) {
           this.authService.saveToken(token);
-          console.log(token);
-          this.router.navigate(['/']);
+          console.log('Token:', token);
+          this.router.navigate(['/']); // Redirect to homepage
+        } else {
+          console.log('Token not found in response headers');
         }
-      }
-      error: (err: any) => {
-        console.log('Error: ' + err);
-      };
+      },
+      error: (err) => {
+        console.log('Error:', err);
+      },
     });
 
     console.warn(this.user);
