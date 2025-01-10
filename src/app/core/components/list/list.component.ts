@@ -22,9 +22,10 @@ export class ListComponent {
   ) {}
   searchForm!: FormGroup;
   page: number = 1;
-  limit: number = 10;
+  limit: number = 2;
   total: number = 0;
   categoryId: string = '';
+  categoryName: string = '';
   startIdx: number = 1;
   endIdx: number = 10;
   results: searchResultsDTO = {
@@ -37,15 +38,22 @@ export class ListComponent {
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
+
       if (id) {
         this.searchForm = this.formBuilder.group({
           searchTerm: '',
         });
         this.categoryId = id;
+
         this.fetchBooks();
       } else {
         console.error('Category ID is missing from the route');
       }
+    });
+
+    this.route.queryParamMap.subscribe((params) => {
+      const name = params.get('category');
+      this.categoryName = name || '';
     });
   }
 

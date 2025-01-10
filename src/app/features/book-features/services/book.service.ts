@@ -21,6 +21,10 @@ export class BookService {
     );
   }
 
+  public searchBooksByTitle(title: string): Observable<BookDTO[]> {
+    return this.http.get<BookDTO[]>(`${this.apiUrl}/books/search/${title}`);
+  }
+
   public getBook(id: string): Observable<BookDTO> {
     return this.http.get<BookDTO>(`${this.apiUrl}/books/${id}`);
   }

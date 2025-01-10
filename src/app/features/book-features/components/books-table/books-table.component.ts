@@ -20,7 +20,7 @@ export class BooksTableComponent {
   ) {}
   searchForm!: FormGroup;
   page: number = 1;
-  limit: number = 10;
+  limit: number = 4;
   total: number = 0;
   categoryId: string = '';
   startIdx: number = 1;
@@ -33,7 +33,7 @@ export class BooksTableComponent {
   };
 
   ngOnInit() {
-    this.route.paramMap.subscribe((params) => {
+    this.route.queryParamMap.subscribe((params) => {
       this.page = params.get('page') ? +params.get('page')! : 1;
       this.limit = params.get('limit') ? +params.get('limit')! : 10;
       this.searchForm = this.formBuilder.group({
@@ -61,6 +61,9 @@ export class BooksTableComponent {
     }
     this.startIdx = (this.page - 1) * this.limit + 1;
     this.endIdx = this.page * this.limit;
+    if (this.endIdx > this.results.totalDocuments) {
+      this.endIdx = this.results.totalDocuments;
+    }
   }
 
   nextPage() {
@@ -117,19 +120,20 @@ export class BooksTableComponent {
       this.fetchBooks();
       return;
     }
-    /* this.listService
-      .searchBooksByTitleAndCategory(searchTerm, this.categoryId)
-      .subscribe({
-        next: (res) => {
-          this.results.books = res;
-          this.results.totalDocuments = res.length;
-          this.results.totalPages = Math.ceil(res.length / this.limit);
-          this.setIdxes();
-        },
-        error: (error) => {
-          console.error('Error searching books:', error);
-        },
-      }); */
+    this.bookService.searchBooksByTitle(searchTerm).subscribe({
+      next: (res) => {
+        this.results.books = res;
+        this.results.totalDocuments = res.length;
+        this.results.totalPages = Math.ceil(res.length / this.limit);
+        this.setIdxes();
+      },
+      error: (error) => {
+        console.error('Error searching books:', error);
+      },
+    });
+  }
+  getCategoryNames(categories: any[]): string {
+    return categories.map((c) => c.name).join(', ');
   }
 
   resetInitials() {
