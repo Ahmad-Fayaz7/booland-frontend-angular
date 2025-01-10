@@ -8,11 +8,11 @@
             <h5 class="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white truncate">
                 {{book.title}}</h5>
         </a>
-        <p class="mt-2 text-base font-normal text-gray-500 dark:text-gray-400 max-h-24 overflow-hidden">
-            {{book.description}}</p>
+        <p class="mt-2 text-base font-normal text-gray-500 dark:text-gray-400 max-h-24 overflow-hidden truncate">
+            {{book.author}}</p>
     </div>
     <div>
-        <p class="text-lg font-bold leading-tight text-red-600 dark:text-red-500">${{book.price}}</p>
+        <p class="text-lg font-bold leading-tight text-destructive">${{book.price}}</p>
     </div>
     <app-add-to-cart-btn (click)="addToCart()"></app-add-to-cart-btn>
 </div>

@@ -1,0 +1,43 @@
+<div class="page-container">
+    <form class="max-w-md" [formGroup]="searchForm" (submit)="search()">
+        <label for="default-search" class="search-label">Search</label>
+        <div class="relative">
+            <div class="search-icon">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                </svg>
+            </div>
+            <input type="search" id="default-search" class="search-input" placeholder="Search books in this category"
+                required formControlName="searchTerm" />
+            <button type="submit" class="search-btn">Search</button>
+        </div>
+    </form>
+
+    <div class="books-container" *ngIf="results.books && results.books.length > 0">
+        <app-card *ngFor="let book of results.books" [book]="book"></app-card>
+    </div>
+
+    <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+        <span class="results-count">Showing
+            <span class="font-semibold text-gray-900 dark:text-white">{{startIdx}}-{{endIdx}}</span> of <span
+                class="font-semibold text-gray-900 dark:text-white">{{results.totalDocuments}}</span></span>
+        <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+            <li>
+                <a (click)="prevPage()" [class.disabled]="page === 1" [class.pointer-events-none]="page === 1"
+                    class="prev-page-link">Previous</a>
+            </li>
+            <!-- Dynamic Pages -->
+            <li *ngFor="let p of getPages()">
+                <a (click)="goToPage(p)" [class.active]="p === page" class="goto-page-link">
+                    {{ p }}
+                </a>
+            </li>
+            <li>
+                <a (click)="nextPage()" [class.disabled]="page === results.totalPages"
+                    [class.pointer-events-none]="page === results.totalPages" class="next-page-link">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>

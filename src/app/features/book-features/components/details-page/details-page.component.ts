@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../../services/book.service';
 import { BookDetailsComponent } from '../book-details/book-details.component';
-import { RelatedBooksComponent } from '../related-books/related-books.component';
+
 import { BookDTO } from '../../models/book.model';
 
 @Component({
   selector: 'app-details-page',
   standalone: true,
-  imports: [BookDetailsComponent, RelatedBooksComponent],
+  imports: [BookDetailsComponent],
   templateUrl: './details-page.component.html',
   styleUrl: './details-page.component.css',
 })

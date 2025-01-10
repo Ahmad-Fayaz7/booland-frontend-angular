@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BookListComponent } from '../../../book-features/components/book-list/book-list.component';
+import { FeaturedBooksComponent } from '../../../book-features/components/featured-books/featured-books.component';
 import { MenuComponent } from '../../../../core/components/menu/menu.component';
 import { CategoriesComponent } from '../../../book-features/components/categories/categories.component';
 import { HeroComponent } from '../hero/hero.component';
@@ -12,10 +12,11 @@ import { CategoryService } from '../../../book-features/services/category.servic
   selector: 'app-home',
   standalone: true,
   imports: [
-    BookListComponent,
+    FeaturedBooksComponent,
     MenuComponent,
     CategoriesComponent,
     HeroComponent,
+    FeaturedBooksComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -25,11 +26,11 @@ export class HomeComponent {
     private bookService: BookService,
     private categoriesService: CategoryService
   ) {}
-  bookList!: BookDTO[];
+  featuredBooks!: BookDTO[];
   categoryList!: CategoryDTO[];
   ngOnInit() {
-    this.bookService.getBooks().subscribe((res) => {
-      this.bookList = res;
+    this.bookService.getFeaturedBooks().subscribe((res) => {
+      this.featuredBooks = res;
     });
 
     this.categoriesService.getCategories().subscribe((res) => {

@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { CategoryDTO } from '../../../features/book-features/models/category.model';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-category-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './category-card.component.html',
   styleUrl: './category-card.component.css',
 })
