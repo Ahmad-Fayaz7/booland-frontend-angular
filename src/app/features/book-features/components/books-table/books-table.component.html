@@ -15,6 +15,7 @@
             <button type="submit" class="search-btn">Search</button>
         </div>
     </form>
+    <button class="create-btn" [routerLink]="['/books/create']">Create new</button>
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -51,7 +52,8 @@
                     ${{book.price}}
                 </td>
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <a [routerLink]="['/books/edit', book._id]"
+                        class="font-medium text-primary-600 dark:text-primary-500 hover:underline">Edit</a>
                 </td>
             </tr>
 

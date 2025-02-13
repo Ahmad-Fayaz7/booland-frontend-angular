@@ -1,0 +1,33 @@
+<div class="mb-5 mx-auto">
+    <!-- Multi-select container -->
+    <div class="selector-container" (click)="dropdownVisible = true">
+        <!-- Selected Tags -->
+        <div id="selected-tags">
+            <span *ngFor="let selected of selectedOptions" class="tag">
+                {{ selected.value }}
+                <button type="button" class="text-primary-500 hover:text-primary-700" (click)="removeOption(selected)">
+                    &times;
+                </button>
+            </span>
+
+            <!-- Search Input -->
+            <input type="text" [(ngModel)]="searchText" class="search-input" (focus)="dropdownVisible = true" />
+        </div>
+
+        <!-- Clear All Button -->
+        <button type="button" id="clear-all" *ngIf="selectedOptions.length > 0" class="clear-all-btn" title="Clear all"
+            (click)="clearAll()">
+            &times;
+        </button>
+    </div>
+
+    <!-- Dropdown Options -->
+    <div id="dropdown-options" *ngIf="dropdownVisible" (mouseleave)="dropdownVisible = false" class="dropdown-list">
+        <ul class="max-h-40 overflow-y-auto">
+            <li *ngFor="let option of filteredOptions" (click)="selectOption(option)"
+                class="option py-2 px-4 hover:bg-primary-100 cursor-pointer">
+                {{ option.value }}
+            </li>
+        </ul>
+    </div>
+</div>

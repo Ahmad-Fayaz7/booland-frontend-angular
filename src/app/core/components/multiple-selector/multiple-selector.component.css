@@ -1,0 +1,42 @@
+#selected-tags {
+  max-height: 80px;
+  overflow-y: auto;
+}
+
+#dropdown-options ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.option {
+  transition: background-color 0.2s;
+}
+
+.input {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500;
+}
+
+.lable {
+  @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+}
+
+.selector-container {
+  @apply relative bg-white border border-gray-300 rounded-lg  p-2 w-full focus-within:ring-2 focus-within:ring-primary-500 focus-within:border-primary-500;
+}
+#selected-tags {
+  @apply flex flex-wrap gap-2 overflow-y-auto max-h-20;
+}
+
+.search-input {
+  @apply outline-none border-none border-transparent focus:border-transparent focus:ring-0 text-sm flex-1 bg-transparent placeholder-gray-400;
+}
+.tag {
+  @apply inline-flex items-center gap-1 bg-primary-100 text-primary-700 text-sm font-medium px-2 py-1 rounded-lg;
+}
+.clear-all-btn {
+  @apply absolute ml-2 right-2 top-2 text-gray-400 hover:text-gray-600;
+}
+.dropdown-list {
+  @apply absolute z-10 mt-1 w-64 bg-white border border-gray-300 rounded-lg shadow-lg;
+}

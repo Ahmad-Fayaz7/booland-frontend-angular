@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { searchResultsDTO } from '../../../../core/models/list.model';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BookService } from '../../services/book.service';
 
 @Component({
   selector: 'app-books-table',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './books-table.component.html',
   styleUrl: './books-table.component.css',
 })

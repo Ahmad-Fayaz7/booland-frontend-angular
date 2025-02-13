@@ -10,6 +10,9 @@ import { BooksByCategoryComponent } from './features/book-features/components/bo
 import { BooksTableComponent } from './features/book-features/components/books-table/books-table.component';
 import { ListComponent } from './core/components/list/list.component';
 import { Component } from '@angular/core';
+import { BookFormComponent } from './features/book-features/components/book-form/book-form.component';
+import { CreateBookComponent } from './features/book-features/components/create-book/create-book.component';
+import { EditBookComponent } from './features/book-features/components/edit-book/edit-book.component';
 
 export const routes: Routes = [
   {
@@ -18,8 +21,16 @@ export const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'books/:id',
+    path: 'books/details/:id',
     component: DetailsPageComponent,
+  },
+  {
+    path: 'books/create',
+    component: CreateBookComponent,
+  },
+  {
+    path: 'books/edit/:id',
+    component: EditBookComponent,
   },
   {
     path: 'books',

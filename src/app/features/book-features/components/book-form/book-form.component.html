@@ -1,0 +1,41 @@
+<form class="max-w-sm mx-auto mb-8" [formGroup]="bookForm" (submit)="saveChanges()">
+    <div class="mb-5">
+        <label for="title" class="label">Title</label>
+        <input type="text" id="title" class="input" placeholder="Title" formControlName="title" />
+    </div>
+    <div class="mb-5">
+        <label for="author" class="label">Author</label>
+        <input type="text" id="author" class="input" placeholder="Author" required formControlName="author" />
+    </div>
+    <div class="mb-5">
+        <label for="isbn" class="label">ISBN</label>
+        <input type="text" id="isbn" class="input" placeholder="ISBN" required formControlName="isbn" />
+    </div>
+    <div class="mb-5">
+        <label class="label" for="cover-image">Cover image</label>
+        <input class="file-upload" aria-describedby="cover-image-help" id="cover-image" type="file"
+            formControlName="coverImageUrl" (change)="onFileSelected($event)" />
+        <!-- Display image preview -->
+        <img *ngIf="imagePreview" [src]="imagePreview" alt="Image Preview" class="mt-4 mx-auto w-1/2" />
+        <img *ngIf="model?.coverImageUrl" [src]="model?.coverImageUrl" alt="Image Preview" class="mt-4 mx-auto w-1/2" />
+    </div>
+    <div class="mb-5">
+        <label for="price" class="label">Price</label>
+        <input type="number" id="isbn" class="input" placeholder="Price" min="0" required formControlName="price" />
+    </div>
+    <label for="categories" class="label">Categories</label>
+    <app-multiple-selector [options]="options" [selectedOptions]="selectedOptions"></app-multiple-selector>
+
+    <div class="mb-5">
+        <label for="stock" class="label">Stock</label>
+        <input type="number" id="stock" class="input" placeholder="Stock" min="0" required formControlName="stock" />
+    </div>
+    <div class="mb-5">
+        <label for="message" class="label">Book description</label>
+        <textarea id="message" rows="4" class="description" formControlName="description"
+            placeholder="Write book description here..."></textarea>
+    </div>
+
+    <button type="submit" class="create-btn">Save changes</button>
+    <button type="button" class="cancle-btn" [routerLink]="['/books']">Cancle</button>
+</form>

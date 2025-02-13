@@ -22,7 +22,7 @@ export class ListComponent {
   ) {}
   searchForm!: FormGroup;
   page: number = 1;
-  limit: number = 2;
+  limit: number = 10;
   total: number = 0;
   categoryId: string = '';
   categoryName: string = '';

@@ -10,6 +10,9 @@ import { BookDTO } from '../../book-features/models/book.model';
   providedIn: 'root',
 })
 export class CartService {
+  constructor(private http: HttpClient) {}
+  apiUrl = environment.apiUrl;
+
   private cartItems = new BehaviorSubject<number>(0);
   numOfCartItems = this.cartItems.asObservable();
 
@@ -30,8 +33,6 @@ export class CartService {
   updateCart(bookId: string, quantity: number) {
     return this.http.post(`${this.apiUrl}/cart/`, { bookId, quantity });
   }
-  constructor(private http: HttpClient) {}
-  apiUrl = environment.apiUrl;
 
   // Get cart
   public getCart(): Observable<any> {
@@ -49,9 +50,9 @@ export class CartService {
   }
 
   // Get number of items in cart
-  public numOfItemsInCart() {
+  /*   public numOfItemsInCart() {
     this.getCart().subscribe((cart) => {
       const numItems = cart.cartItems.length;
     });
-  }
+  } */
 }
