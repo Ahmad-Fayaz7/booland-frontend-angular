@@ -52,8 +52,12 @@
                     ${{book.price}}
                 </td>
                 <td class="px-6 py-4">
-                    <a [routerLink]="['/books/edit', book._id]"
-                        class="font-medium text-primary-600 dark:text-primary-500 hover:underline">Edit</a>
+                    <a [routerLink]="['/books/delete', book._id]"
+                        class="font-medium text-primary-600 dark:text-primary-500 hover:underline">Edit<span
+                            class="text-black"> | </span>
+                    </a>
+                    <a (click)="deleteBook(book._id)"
+                        class="font-medium text-red-600 dark:text-primary-500 hover:underline">Delete</a>
                 </td>
             </tr>
 

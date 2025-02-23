@@ -5,6 +5,7 @@ import { BookFormComponent } from '../book-form/book-form.component';
 import { MultipleSelector } from '../../../../core/models/multiple-selector.model';
 import { BookCreationDTO } from '../../models/book.model';
 import { BookService } from '../../services/book.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-book',
@@ -16,7 +17,8 @@ import { BookService } from '../../services/book.service';
 export class CreateBookComponent {
   constructor(
     private categoryService: CategoryService,
-    private bookService: BookService
+    private bookService: BookService,
+    private router: Router
   ) {}
   categories: CategoryDTO[] = [];
   options: MultipleSelector[] = [];
@@ -34,8 +36,8 @@ export class CreateBookComponent {
 
   saveChanges(book: BookCreationDTO) {
     this.model = book;
-    this.bookService.createBook(this.model).subscribe((book) => {
-      console.log('Book created');
+    this.bookService.createBook(this.model).subscribe((response) => {
+      this.router.navigate(['/books/details', response.newBookId]);
     });
   }
 }

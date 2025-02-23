@@ -4,7 +4,7 @@ import { BookCreationDTO, BookDTO } from '../../models/book.model';
 import { MultipleSelector } from '../../../../core/models/multiple-selector.model';
 import { BookService } from '../../services/book.service';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
 import { CategoryDTO } from '../../models/category.model';
 
@@ -20,12 +20,14 @@ export class EditBookComponent {
     private bookService: BookService,
     private categoryService: CategoryService,
     private route: ActivatedRoute,
-    private cdRef: ChangeDetectorRef // Inject ChangeDetectorRef
+    private cdRef: ChangeDetectorRef, // Inject ChangeDetectorRef
+    private router: Router
   ) {}
   options: MultipleSelector[] = [];
   selectedOptions: MultipleSelector[] = [];
   categories: CategoryDTO[] = [];
   model!: BookDTO;
+  bookId: string | null = null;
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
@@ -43,6 +45,7 @@ export class EditBookComponent {
       this.cdRef.detectChanges();
       // Set selected categories
       if (id) {
+        this.bookId = id;
         this.bookService.getBook(id).subscribe((book) => {
           this.selectedOptions = book.category.map((category) => {
             return <MultipleSelector>{
@@ -61,8 +64,8 @@ export class EditBookComponent {
   }
   saveChanges(book: BookCreationDTO) {
     this.bookService.editBook(this.model._id, book).subscribe((updatedBook) => {
-      // console.log(updatedBook);
-      // console.log('Book edited');
+      this.router.navigate(['/books/details', this.bookId]);
+      // this.router.navigate(['/books/details', this.bookId]);
     });
   }
 }

@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AddToCartBtnComponent } from '../add-to-cart-btn/add-to-cart-btn.component';
 import { BookDTO } from '../../../features/book-features/models/book.model';
 import { CartService } from '../../../features/shopping-cart/services/cart.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-also-bought-item',
   standalone: true,
-  imports: [AddToCartBtnComponent],
+  imports: [AddToCartBtnComponent, RouterModule],
   templateUrl: './also-bought-item.component.html',
   styleUrl: './also-bought-item.component.css',
 })

@@ -9,6 +9,9 @@ import { searchResultsDTO } from '../../../core/models/list.model';
   providedIn: 'root',
 })
 export class BookService {
+  public deleteBook(bookId: string) {
+    return this.http.delete(`${this.apiUrl}/books/${bookId}`);
+  }
   constructor(private http: HttpClient) {}
   apiUrl = environment.apiUrl;
 
@@ -39,9 +42,9 @@ export class BookService {
     );
   }
 
-  public createBook(book: BookCreationDTO): Observable<BookDTO> {
+  public createBook(book: BookCreationDTO): Observable<any> {
     const formData = this.buildFormData(book);
-    return this.http.post<BookDTO>(`${this.apiUrl}/books/create`, formData);
+    return this.http.post<any>(`${this.apiUrl}/books/create`, formData);
   }
 
   public editBook(id: string, book: BookCreationDTO): Observable<BookDTO> {

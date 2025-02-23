@@ -6,7 +6,6 @@ import { AuthGuard } from './features/user-auth/services/auth-guard.service';
 import { DetailsPageComponent } from './features/book-features/components/details-page/details-page.component';
 import { CartComponent } from './features/shopping-cart/components/cart/cart.component';
 import { CheckoutFormComponent } from './features/checkout/checkout-form/checkout-form.component';
-import { BooksByCategoryComponent } from './features/book-features/components/books-by-category/books-by-category.component';
 import { BooksTableComponent } from './features/book-features/components/books-table/books-table.component';
 import { ListComponent } from './core/components/list/list.component';
 import { Component } from '@angular/core';

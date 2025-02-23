@@ -9,11 +9,12 @@ import { QuantitySelectorComponent } from '../../../../core/components/quantity-
 import { RemoveItemBtnComponent } from '../../../../core/components/remove-item-btn/remove-item-btn.component';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cart-item',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterModule],
   templateUrl: './cart-item.component.html',
   styleUrl: './cart-item.component.css',
   encapsulation: ViewEncapsulation.None, // or ShadowDom for shadow DOM encapsulation
